@@ -16,3 +16,5 @@ Tildes Focus can be installed via [Greasemonkey](https://addons.mozilla.org/en-U
 
 With either extension installed, simply visit the script URL to be prompted to install it:  
 https://github.com/WesCook/TildesFocus/raw/master/tildes-focus.user.js
+
+The setting "Configure marking new comments" must also be enabled on your [Tildes settings page](https://tildes.net/settings).  This is off by default, but is required to show which comments are new.
