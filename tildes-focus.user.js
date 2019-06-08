@@ -28,7 +28,7 @@
 			focusComment();
 		}
 
-		if (event.isComposing || event.keyCode === 74) { // 'j'
+		if (event.isComposing || event.keyCode === 74) { // 'J'
 			setCommentIndex("next");
 			focusComment();
 		}
