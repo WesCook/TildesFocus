@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tildes Focus
 // @namespace    https://github.com/WesCook/TildesFocus
-// @version      1.0.0
+// @version      1.1.0
 // @description  Focus new comments on Tildes.net by navigating with J/K keys.
 // @author       Wes Cook
 // @match        https://tildes.net/*
@@ -18,6 +18,11 @@
 
 	// Detect key inputs
 	document.addEventListener("keydown", event => {
+		// Don't focus text if writing comment
+		if (document.activeElement.nodeName === "TEXTAREA") {
+			exit();
+		}
+
 		if (event.isComposing || event.keyCode === 75) { // 'K'
 			setCommentIndex("prev");
 			focusComment();
