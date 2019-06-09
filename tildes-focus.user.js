@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tildes Focus
 // @namespace    https://github.com/WesCook/TildesFocus
-// @version      1.1.0
+// @version      1.1.1
 // @description  Focus new comments on Tildes.net by navigating with J/K keys.
 // @author       Wes Cook
 // @match        https://tildes.net/*
@@ -20,7 +20,7 @@
 	document.addEventListener("keydown", event => {
 		// Don't focus text if writing comment
 		if (document.activeElement.nodeName === "TEXTAREA") {
-			exit();
+			return;
 		}
 
 		if (event.isComposing || event.keyCode === 75) { // 'K'
@@ -61,6 +61,10 @@
 
 	// Scroll to comment and style background
 	function focusComment() {
+		// Exit if no new comments
+		if (!newComments.length)
+			return;
+		
 		// Uncollapse parents
 		let curNode = newComments[curComment];
 		while (curNode != document) {
