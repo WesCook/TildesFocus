@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tildes Focus
 // @namespace    https://github.com/WesCook/TildesFocus
-// @version      1.1.2
+// @version      1.1.3
 // @description  Focus new comments on Tildes.net by navigating with J/K keys.
 // @author       Wes Cook
 // @match        https://tildes.net/*
@@ -40,7 +40,7 @@
 			prevComment = curComment;
 		}
 
-		if (direction == "prev") {
+		if (direction === "prev") {
 			if (curComment <= 0) {
 				curComment = newComments.length - 1;
 			}
@@ -49,7 +49,7 @@
 			}
 		}
 
-		if (direction == "next") {
+		if (direction === "next") {
 			if (curComment >= newComments.length - 1) {
 				curComment = 0;
 			}
@@ -62,8 +62,9 @@
 	// Scroll to comment and style background
 	function focusComment() {
 		// Exit if no new comments
-		if (!newComments.length)
+		if (!newComments.length) {
 			return;
+		}
 
 		// Uncollapse parents
 		let curNode = newComments[curComment];
