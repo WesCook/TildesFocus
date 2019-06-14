@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tildes Focus
 // @namespace    https://github.com/WesCook/TildesFocus
-// @version      1.1.1
+// @version      1.1.2
 // @description  Focus new comments on Tildes.net by navigating with J/K keys.
 // @author       Wes Cook
 // @match        https://tildes.net/*
@@ -64,7 +64,7 @@
 		// Exit if no new comments
 		if (!newComments.length)
 			return;
-		
+
 		// Uncollapse parents
 		let curNode = newComments[curComment];
 		while (curNode != document) {
@@ -73,13 +73,13 @@
 		}
 
 		// Scroll to comment
-		newComments[curComment].childNodes[1].scrollIntoView({
+		newComments[curComment].firstElementChild.scrollIntoView({
 			behavior: "smooth",
 			block: "center"
 		});
 
 		// Style background
-		newComments[prevComment].childNodes[1].style.backgroundColor = "unset";
-		newComments[curComment].childNodes[1].style.backgroundColor = "rgba(204, 150, 165, 0.1)";
+		newComments[prevComment].firstElementChild.style.backgroundColor = "unset";
+		newComments[curComment].firstElementChild.style.backgroundColor = "rgba(204, 150, 165, 0.1)";
 	}
 })();
